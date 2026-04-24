@@ -21,7 +21,10 @@ struct ChartsView: View {
         .onAppear {
             viewModel.updateData(records: records, logs: logs)
         }
-        .onChange(of: records.count) { _, _ in
+        .onChange(of: records) { _, _ in
+            viewModel.updateData(records: records, logs: logs)
+        }
+        .onChange(of: logs) { _, _ in
             viewModel.updateData(records: records, logs: logs)
         }
     }
