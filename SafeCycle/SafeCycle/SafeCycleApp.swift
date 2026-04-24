@@ -8,6 +8,14 @@ struct SafeCycleApp: App {
     @AppStorage("is_stealth_mode") private var isStealthMode = false
     @State private var isUnlocked = false
 
+    private var isDebugMode: Bool {
+        #if DEBUG
+        return ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
+        #else
+        return false
+        #endif
+    }
+
     var body: some Scene {
         WindowGroup {
             Group {
@@ -18,12 +26,12 @@ struct SafeCycleApp: App {
                         hasSetPin = true
                         isUnlocked = true
                     })
-                } else if !isUnlocked {
+                } else if !isUnlocked && !isDebugMode {
                     LockScreenView(onUnlock: { stealth in
                         isStealthMode = stealth
                         isUnlocked = true
                     })
-                } else if isStealthMode {
+                } else if isStealthMode && !isDebugMode {
                     CalculatorStealthView()
                 } else {
                     MainTabView()

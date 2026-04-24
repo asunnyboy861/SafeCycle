@@ -145,14 +145,14 @@ struct SettingsView: View {
                 }
                 .foregroundStyle(Color(hex: "F2E4BF"))
             }
-            Link(destination: URL(string: "https://safecycle.app/privacy")!) {
+            Link(destination: URL(string: "https://asunnyboy861.github.io/SafeCycle/privacy")!) {
                 HStack {
                     Image(systemName: "hand.raised")
                     Text("Privacy Policy")
                 }
                 .foregroundStyle(Color(hex: "F2E4BF"))
             }
-            Link(destination: URL(string: "https://safecycle.app/terms")!) {
+            Link(destination: URL(string: "https://asunnyboy861.github.io/SafeCycle/terms")!) {
                 HStack {
                     Image(systemName: "doc.text")
                     Text("Terms of Use")
